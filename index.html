@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCENT-INDO | Local Artisan Perfume</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">SCENT<span>INDO</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#about">Our Story</a></li>
+            </ul>
+            <div class="cart-icon">🛒 <span id="cart-count">0</span></div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Aroma Suci <span>Karakter Indonesia</span></h1>
+            <p class="fade-in-delay">Rayakan Ramadhan 2026 dengan koleksi parfum artisan resmi bersertifikat
+                <strong>Halal & BPOM</strong>. Keanggunan dalam setiap semprotan untuk ibadah dan hari raya.
+            </p>
+            <div class="badges-row fade-in-delay">
+                <span class="cert-badge">MUI Halal Certified ✓</span>
+                <span class="cert-badge">BPOM Registered ✓</span>
+            </div>
+            <a href="#collection" class="btn-primary">Lihat Koleksi Halal</a>
+        </div>
+        <div class="hero-image">
+            <div class="glass-card">
+                <span class="badge">Edisi Ramadhan 2026</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection" class="products">
+        <div class="section-title">
+            <h2>Koleksi Halal Terlaris</h2>
+            <p>Aman, Nyaman, dan Berkarakter. Pilihan tepat untuk hantaran Lebaran.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" id="p1">
+                <div class="p-img" style="background: linear-gradient(45deg, #1a1a1a, #c5a059);"></div>
+                <h3>Morris Eau De Parfum</h3>
+                <p>Harga Grosir Terbaik</p>
+                <div class="tags"><span>Halal</span><span>BPOM</span></div>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="product-card" id="p2">
+                <div class="p-img" style="background: linear-gradient(45deg, #2c3e50, #c5a059);"></div>
+                <h3>Kahf/Wardah Exclusive</h3>
+                <p>Best Seller Market</p>
+                <div class="tags"><span>Halal</span><span>BPOM</span></div>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+            <div class="product-card" id="p3">
+                <div class="p-img" style="background: linear-gradient(45deg, #4b0082, #c5a059);"></div>
+                <h3>Evangeline Hijab Series</h3>
+                <p>Special Ramadhan</p>
+                <div class="tags"><span>Halal</span><span>BPOM</span></div>
+                <button class="add-to-cart">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <div class="logo">SCENT<span>INDO</span></div>
+            <p>Solusi wewangian premium untuk Gen-Z Indonesia.</p>
+        </div>
+        <div class="footer-links">
+            <p>&copy; 2026 Scent-Indo by ClawdBot. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inisialisasi Telegram Web App
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // Biar layarnya langsung penuh ke atas
+    </script>
+</body>
+
+</html>
