@@ -2,26 +2,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const tg = window.Telegram.WebApp;
     const cartButtons = document.querySelectorAll('.add-to-cart');
     const cartCount = id('cart-count');
+    const waButton = id('wa-checkout-btn');
     let count = 0;
     let selectedItems = [];
+
+    // DATA PEMILIK (YAN)
+    const WA_NUMBER = "628159102047";
+
+    function updateCart() {
+        cartCount.textContent = count;
+
+        const orderSummary = selectedItems.join(", ");
+        const waText = encodeURIComponent(`Halo Scent-Indo, saya mau pesan parfum:\n\n${orderSummary}\n\nMohon info total harganya ya.`);
+        const waLink = `https://wa.me/${WA_NUMBER}?text=${waText}`;
+
+        // 1. Jika di dalam Telegram
+        if (tg.initData) {
+            tg.MainButton.setText(`PESAN VIA WHATSAPP (${count})`);
+            tg.MainButton.show();
+            tg.MainButton.setParams({
+                color: '#25D366', // Warna Hijau WA
+                text_color: '#ffffff'
+            });
+            tg.MainButton.onClick(() => {
+                tg.openLink(waLink);
+            });
+        }
+
+        // 2. Tampilkan tombol melayang (Untuk WA/Browser Biasa)
+        if (count > 0) {
+            waButton.style.display = 'flex';
+            waButton.onclick = () => {
+                window.open(waLink, '_blank');
+            };
+            waButton.innerHTML = `<span>💬 Pesan via WA (${count})</span>`;
+        }
+    }
 
     cartButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             count++;
-            cartCount.textContent = count;
-
             const productName = btn.parentElement.querySelector('h3').textContent;
             selectedItems.push(productName);
 
-            // Tampilkan Main Button Telegram
-            tg.MainButton.setText(`LIHAT PESANAN (${count})`);
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                color: '#c5a059',
-                text_color: '#ffffff'
-            });
+            updateCart();
 
-            // Animasi tombol kartu
+            // Animasi visual tombol kartu
             btn.textContent = 'Ditambahkan! ✓';
             btn.style.borderColor = '#4CAF50';
             btn.style.color = '#4CAF50';
@@ -32,13 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.style.color = '#f5f5f5';
             }, 2000);
         });
-    });
-
-    // Ketika tombol utama Telegram diklik (Checkout)
-    tg.onEvent('mainButtonClicked', function () {
-        const orderSummary = selectedItems.join(", ");
-        tg.sendData("ORDER_PARFUM:" + orderSummary);
-        tg.close();
     });
 
     // Simple scroll reveal
